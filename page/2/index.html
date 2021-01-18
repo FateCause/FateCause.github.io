@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Windows/Windows10家庭中文版安装Hyper -v" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Windows/Windows10%E5%AE%B6%E5%BA%AD%E4%B8%AD%E6%96%87%E7%89%88%E5%AE%89%E8%A3%85Hyper%20-v/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.774Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、创建Hyper-V.cmd文件并写入一下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pushd &quot;%~dp0&quot;</span><br><span class="line"></span><br><span class="line">dir &#x2F;b %SystemRoot%\servicing\Packages\*Hyper-V*.mum &gt;hyper-v.txt</span><br><span class="line"></span><br><span class="line">for &#x2F;f %%i in (&#39;findstr &#x2F;i . hyper-v.txt 2^&gt;nul&#39;) do dism &#x2F;online &#x2F;norestart &#x2F;add-package:&quot;%SystemRoot%\servicing\Packages\%%i&quot;</span><br><span class="line"></span><br><span class="line">del hyper-v.txt</span><br><span class="line"></span><br><span class="line">Dism &#x2F;online &#x2F;enable-feature &#x2F;featurename:Microsoft-Hyper-V-All &#x2F;LimitAccess &#x2F;ALL</span><br></pre></td></tr></table></figure>
+<p>2、以管理员身份运行运行该文件</p>
+<p>3、配置更新完成以后，进入系统桌面，我们点击系统桌面左下角的 【开始】，找到并展开Windows 工具，再点击：Hyper-V管理器</p>
+<p>4、点击Windows 工具展开项中的Hyper-V快速创建虚拟机</p>
+<p>5、Hyper -v管理工具可以管理启动、修改、删除</p>
+<p><strong>VMware和windows虚拟机冲突解决</strong></p>
+<p>因为windows虚拟机需要用到hype -v导致和vmware冲突，导致vmware虚拟机无法启动，解决步骤</p>
+<p>​    1）程序与功能-&gt;启用或关闭windows功能中关闭适用于Linux的windows子系统、虚拟机平台</p>
+<p>​    2）cmd中命令services.msc把hype -v相关的服务全部关闭，并设置为手动</p>
+<p>​    3）管理员权限打开powershell，执行命令bcdedit /set hypervisorlaunchtype off</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Windows/Windows10%E5%AE%B6%E5%BA%AD%E4%B8%AD%E6%96%87%E7%89%88%E5%AE%89%E8%A3%85Hyper%20-v/" data-id="ckk2gq3td000jz8pqb9njbo8g" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Windows/VirtualBox运行Linux虚拟机网络配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Windows/VirtualBox%E8%BF%90%E8%A1%8CLinux%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.771Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="VirtualBox下设置Linux虚拟机的IP静态ip地址"><a href="#VirtualBox下设置Linux虚拟机的IP静态ip地址" class="headerlink" title="VirtualBox下设置Linux虚拟机的IP静态ip地址"></a>VirtualBox下设置Linux虚拟机的IP静态ip地址</h4><h5 id="一、设置主机与虚拟机之间的网络连接方式"><a href="#一、设置主机与虚拟机之间的网络连接方式" class="headerlink" title="一、设置主机与虚拟机之间的网络连接方式"></a>一、设置主机与虚拟机之间的网络连接方式</h5><p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115839.png" alt="在这里插入图片描述"></p>
+<h5 id="二、设置虚拟机通过NAT方式让主机与外网链接"><a href="#二、设置虚拟机通过NAT方式让主机与外网链接" class="headerlink" title="二、设置虚拟机通过NAT方式让主机与外网链接"></a>二、设置虚拟机通过NAT方式让主机与外网链接</h5><p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115845.png" alt="在这里插入图片描述"></p>
+<h5 id="三、修改host-only的Linux系统的网络配置"><a href="#三、修改host-only的Linux系统的网络配置" class="headerlink" title="三、修改host-only的Linux系统的网络配置"></a>三、修改host-only的Linux系统的网络配置</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/sysconfig/network-scripts/</span><br><span class="line"></span><br><span class="line">vi ifcfg-enp0s8</span><br><span class="line"></span><br><span class="line">将BOOTPROTO设置为static，原来可能是DHCP，DHCP是动态IP地址分配协议，现在我们改成静态的，即static。并且新增IPADDR字段为192.168.56.80(自定义)，</span><br><span class="line">除此之外，上面的ONBOOT字段如果是no，请改为yes</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115849.png" alt="在这里插入图片描述"></p>
+<h5 id="四、使用IP-addr命令查看"><a href="#四、使用IP-addr命令查看" class="headerlink" title="四、使用IP addr命令查看"></a>四、使用IP addr命令查看</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">查看网络信息enp0s8的信息是否有配置的静态ip</span><br><span class="line">ip addr</span><br><span class="line"></span><br><span class="line">重启网络或者重启虚拟机，即可访问静态ip</span><br><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115858.png" alt="image-20201127173053418"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Windows/VirtualBox%E8%BF%90%E8%A1%8CLinux%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/" data-id="ckk2gq3te000lz8pqhcmid6nr" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Windows/VirtualBox安装linux虚拟机" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Windows/VirtualBox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.769Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="VirtualBox安装Centos步骤"><a href="#VirtualBox安装Centos步骤" class="headerlink" title="VirtualBox安装Centos步骤"></a>VirtualBox安装Centos步骤</h3><h4 id="第一部分-创建虚拟电脑"><a href="#第一部分-创建虚拟电脑" class="headerlink" title="第一部分 创建虚拟电脑"></a>第一部分 创建虚拟电脑</h4><p>1 安装Virtualbox虚拟机软件。</p>
+<p>2 运行Virtualbox</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115502" alt="这里写图片描述"></p>
+<p>3 点击“新建”按钮，弹出新建虚拟电脑窗口</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115504" alt="这里写图片描述"></p>
+<p>4 选择类型Linux，选择对应的版本，这里是Other Linux(64-bit)。点击“下一步”。</p>
+<p>5 选择内存大小，这里设置为2G内存。点击“下一步”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115514" alt="这里写图片描述"></p>
+<p>6 选择“现在创建虚拟硬盘”。点击“创建”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115519" alt="这里写图片描述"></p>
+<p>7 选择虚拟硬盘文件类型。这里选择“VDI”，点击“下一步”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115526" alt="这里写图片描述"></p>
+<p>8 存储在物理硬盘上，这里选择“动态分配”。点击“下一步”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115539" alt="这里写图片描述"></p>
+<p>9 选择文件位置和大小。设置好后，点击“创建”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115546" alt="这里写图片描述"></p>
+<p>10 完成创建过程。如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115556" alt="这里写图片描述"></p>
+<h4 id="第二部分-虚拟电脑相关设置"><a href="#第二部分-虚拟电脑相关设置" class="headerlink" title="第二部分 虚拟电脑相关设置"></a>第二部分 虚拟电脑相关设置</h4><p>1 点击Virtualbox页面“设置”按钮。点击设置选项中的“系统”选项。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115604" alt="这里写图片描述"></p>
+<p>2 在启动顺序里选中光驱，点击右边的向上箭头，把光驱升到第一位。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115611" alt="这里写图片描述"></p>
+<p>3 然后再选中存储，单击没有碟片，点击右边的光盘图标，选择你之前下载好的CentOS-7系统镜像打开。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115618" alt="这里写图片描述"></p>
+<p>4 相关设置完成。也可进行其他设置，这里只做最基本的设置。</p>
+<h4 id="第三部分-启动"><a href="#第三部分-启动" class="headerlink" title="第三部分 启动"></a>第三部分 启动</h4><p>1 在virtualbox上点击“启动”。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115625" alt="这里写图片描述"></p>
+<p>2 点击启动，把鼠标点进里面，选择第一个（被选中的时候，字体是白色的），回车安装。</p>
+<p>3 选择语言为中文，继续。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115632" alt="这里写图片描述"></p>
+<p>4 点击软件选择，根据自己需要选择安装，如果不熟悉，就不要选择，默认最小安装，不过要安装图形界面的话，还是选择一下GNOME或者KDE。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115641" alt="这里写图片描述"></p>
+<p>5 在安装位置哪里选择创建好的虚拟磁盘，分区哪里自动分配分区大小。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115656" alt="这里写图片描述"></p>
+<p>6 在网络和主机名里把网络打开，主机名默认就好，也可更改成你自己喜欢的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115712" alt="这里写图片描述"></p>
+<p>7 现在点击开始安装</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115747" alt="这里写图片描述"></p>
+<p>8 在这里设置好root用户的密码，和创建一个用户。新手不建议在root账户下使用系统，所以应该建立一个普通用户，我在这里就不演示了。都说root账户是把裤衩穿在外面的男人，它在系统中有至高无上的权限，哈哈。但是，高的权限也意味着高的风险，比如你不小心在根目录下执行了 rm -fr / 命令，嘿嘿，那就等着给你的系统收尸吧。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115804" alt="这里写图片描述"></p>
+<p>9 安装完成，点击重启。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115813" alt="这里写图片描述"></p>
+<p>10 重启出现这个，是CentOS-7的初始化信息.</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115821" alt="这里写图片描述"></p>
+<p>11 点击完成配置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111115827" alt="这里写图片描述"></p>
+<p>12 登陆即可。安装完成。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Windows/VirtualBox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/" data-id="ckk2gq3td000kz8pq5zqa6bt2" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Tomcat/01_tomcat环境变量配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Tomcat/01_tomcat%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.764Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li> “高级”-&gt;“环境变量“-&gt;“系统变量”中新增 CATALINA_BASE变量，值为tomcat主目录路径</li>
+<li>“高级”-&gt;“环境变量“-&gt;“系统变量”中新增 CATALINA_HOME变量，值为tomcat主目录路径</li>
+<li>“高级”-&gt;“环境变量“-&gt;“系统变量”中path变量中，增加一条%CATALINA_HOME%\lib;%CATALINA_HOME%\bin</li>
+<li>cmd中使用startup命令tomcat可启动成功</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Tomcat/01_tomcat%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/" data-id="ckk2gq3td000iz8pqduqs2u3i" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SpringMVC/注解汇总/@ModelAttribute注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringMVC/%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/@ModelAttribute%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.760Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="@ModelAttribute"></a><strong>@ModelAttribute</strong></h1><p> 　@ModelAttribute最主要的作用是将数据添加到模型对象中，用于视图页面展示时使用。@ModelAttribute等价于 model.addAttribute(“attributeName”, abc); 但是根据@ModelAttribute注释的位置不同，和其他注解组合使用，致使含义有所不同。</p>
+<p>　　@ModelAttribute和@RequestMapping分开修饰方法时，@ModelAttribute会优先于@RequestMapping执行，也就是会在Controller中每个方法执行前被执行，所以当一个Controller中有映射到多个Url时，需要谨慎使用；但是@ModelAttribute和@RequestMapping同事修饰一个方法时和他们单独修改方法时所代表的的意思是不同的，这一点要特别注意。</p>
+<h2 id="属性介绍："><a href="#属性介绍：" class="headerlink" title="属性介绍："></a><strong>属性介绍：</strong></h2><ol>
+<li>value：类型是为String，代表绑定的属性名称</li>
+</ol>
+<h2 id="使用方式："><a href="#使用方式：" class="headerlink" title="使用方式："></a><strong>使用方式：</strong></h2><ol>
+<li>方法返回值为void，@ModelAttribute注解没有指定任何属性，这样的话需要将Model或者map传入方法中，如下：key为user1，value为User对象，可以用 ${requestScope.user1.userName} 取出</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　@ModelAttribute</span><br><span class="line">&#x2F;&#x2F;@ModelAttribute 没有指定值,且被修饰的方法返回值为void,则需要借助map或者model将数据模型放入request域</span><br><span class="line">public void getUser(Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">    System.out.println(&quot;ModelAttribute1..&quot;);</span><br><span class="line">    map.put(&quot;user1&quot;, new User(&quot;kelin&quot;,&quot;123aaa&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　2.方法返回值为普通的pojo，@ModelAttribute注解没有指定任何属性，这样的话，request域中存入的对象名字默认为类型首字母小写，如下：key为user(类型首字母小写)，value为User对象，可以用 ${requestScope.user.userName} 取出</p>
+<p>　　<strong>注意：当@ModelAttrbute修改方法时，这里是将返回数据user1对象放到model模型中而不是将方法上的参数userName和age放到model模型中返回给页面中使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　@ModelAttribute</span><br><span class="line">&#x2F;&#x2F;@ModelAttribute 没有指定值,且被修饰方法有pojo类型的返回值,则request域中 key为返回值类型第一个字母小写的字符串，value为返回值</span><br><span class="line">public User getUser(@RequestParam(&quot;userName&quot;) String userName,@RequestParam(&quot;age&quot;) int age) &#123; 　　　　User user1&#x3D;new User();　　　　user.setUserName(userName);　　　　user.setAge(age);　　　　return user1; 　　&#125;</span><br></pre></td></tr></table></figure>
+<p>　　3.方法返回值为普通的pojo，@ModelAttribute注解指定了value属性，这样的话，request域中就放入了一个对象，如下：key为user2，value为User对象，可以用 ${requestScope.user2.userName} 取出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　@ModelAttribute(&quot;user2&quot;)</span><br><span class="line">&#x2F;&#x2F;@ModelAttribute 的值就是request域中的key,被该注解修饰的方法的返回值为对应的value</span><br><span class="line">public User getUser() &#123;</span><br><span class="line">    System.out.println(&quot;ModelAttribute3..&quot;);</span><br><span class="line">    return new User(&quot;kelin&quot;,&quot;123aaa&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　4.@ModelAttribute 修饰方法参数（最常用），参数直接封装到对象中，比如常用的 pageNo，pageSize..,</p>
+<p>　　<strong>注意：这里@ModelAttribute修饰的是方法上的参数，这里是直接将user参数放到了model模型中返回到页面中使用，而return的字符窜“modelAttribute”其实就是视图文件名</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　&#x2F;*</span><br><span class="line"> * @ModelAttribute用于修饰入参,前台传过来的值自动赋予入参对于的属性</span><br><span class="line"> *&#x2F;</span><br><span class="line">@RequestMapping(&quot;&#x2F;testModelAttribute5&quot;)</span><br><span class="line">public String testModelAttribute(@ModelAttribute User user) &#123;</span><br><span class="line">    return &quot;modelAttribute&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>　　5.两个注解同时修饰方法，看注释解释，有点不一样，返回的东西不是视图，而是request域中的值，返回的视图变成了 @RequestMapping中指定的value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">　　&#x2F;*</span><br><span class="line"> * @ModelAttribute 和 @RequestMapping 同时修饰一个方法</span><br><span class="line"> * </span><br><span class="line"> * @ModelAttribute 中value为 request域中的key,被修饰的方法返回值为request域中的value</span><br><span class="line"> * @RequestMapping 中value为 返回的视图名,此例中相当于定向到xxx&#x2F;testModelAttribute4.jsp</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">@ModelAttribute(value&#x3D;&quot;user&quot;)</span><br><span class="line">@RequestMapping(value&#x3D;&quot;&#x2F;testModelAttribute4&quot;)</span><br><span class="line">public User testModelAttribute() &#123;</span><br><span class="line">    return new User(&quot;kelin&quot;,&quot;123aaa&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　6.@ModelAttribute注释一个方法的返回值，</p>
+<p>　　大家可以看到返回值类型是对象类型，而且通过 @ModelAttribute(“user2”) 注解，此时会添加返回值到模型数据（ 名字为user2 ） 中供视图展示使用@ModelAttribute 注解的返回值会覆盖 @RequestMapping 注解方法中的 @ModelAttribute 注解的同名命令对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Controller </span><br><span class="line">public class HelloWorldController &#123; </span><br><span class="line">    @RequestMapping(value &#x3D; &quot;&#x2F;helloWorld&quot;) </span><br><span class="line">    public @ModelAttribute(&quot;user2&quot;) User helloWorld(@ModelAttribute User user) &#123; </span><br><span class="line">        return new User(); </span><br><span class="line">     &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上都是针对一个controller类中只有一个被@ModelAttribute修改的方法，如果一个controller中除了有@ModelAttribute修饰的方法还有被@RequestMapping修饰的方法有事如何工作的？</p>
+<p>我们知道在一个controller中当我们调用任何一个被@RequestMapping修饰的方法时都会先执行被@ModelAttribute修饰的方法</p>
+<p>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class ModelAttributeController&#123;</span><br><span class="line">    @ModelAttribute(&quot;loginname&quot;)</span><br><span class="line">    public String userModelfirst(@ResquestParam(&quot;loginname&quot;) String loginname)&#123;</span><br><span class="line">　　　　&#x2F;&#x2F;返回的参数赋值给value变量</span><br><span class="line">        return loginname;   </span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(vaule&#x3D;&quot;&#x2F;loginfirst&quot;)</span><br><span class="line">    public String loginfirst()&#123;</span><br><span class="line">　　　　&#x2F;&#x2F;返回到结果界面</span><br><span class="line">       return &quot;resultfirst&quot;; </span><br><span class="line">　　&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　这里注解@ModelAttribute注解默认vaule值为“loginname”，指定model的属性名称，属性的值就是@ModelAttribute注解的方法的返回值。他把请求参数loginname的值通过@ResquestParam赋值给变量loginname，然后再设置一个名为loginname的属性到Model中，属性值就是userModelfirst方法的返回值。</p>
+<p>　　因为@ModelAttribute优先于@RequestMapping执行，所以当访问URL“/loginfirst”时会先执行@ModelAttribute注解的方法，在resultfirst.jsp中用EL表达式得到${resquestScope.loginname}获取。</p>
+<p>上面的这种写法和下面这种写法是等价的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class ModelAttributeController&#123;</span><br><span class="line">    @ModelAttribute</span><br><span class="line">    public void userModelsecond(@ResquestParam(&quot;loginname&quot;) String loginname，Model model)&#123;</span><br><span class="line">        model.addAttribute(&quot;loginname&quot;,loginname);</span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(vaule&#x3D;&quot;&#x2F;loginsecond&quot;)</span><br><span class="line">    public String loginsecond()&#123;</span><br><span class="line">　　　　　&#x2F;&#x2F;返回到结果界面</span><br><span class="line">     　 return &quot;resultsecond&quot;; </span><br><span class="line">　　&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Controller@RequestMapping(&quot;&#x2F;modelAttributeController&quot;)</span><br><span class="line">public class ModelAttributeController&#123;</span><br><span class="line">   @ModelAttribute(&quot;user&quot;)</span><br><span class="line">   public String userModelfourth(@ResquestParam(&quot;loginname&quot;) String loginname)&#123;</span><br><span class="line">      User user1 &#x3D; new User();</span><br><span class="line">      user1.setLoginame(loginname);</span><br><span class="line">      return user1;   </span><br><span class="line">   &#125;</span><br><span class="line">   @RequestMapping(vaule&#x3D;&quot;&#x2F;loginfourth&quot;)</span><br><span class="line">   public String loginfourth( @ModelAttribute(&quot;user&quot;) User user)&#123;</span><br><span class="line">&#x2F;&#x2F;返回到结果界面</span><br><span class="line">   　　user.setUsername(&quot;test&quot;);</span><br><span class="line">   　　return &quot;resultfourth&quot;; </span><br><span class="line">　　&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　当我们请求localhost:8080/modelAttributeController/loginfourth?loginname=lisi时，会先执行userModelfourth方法，同时会把lisi赋值给此方法的loginname参数，然后生成一个user对象，并且在model中会有一个key为user，value为user1的数据，然后才会执行loginfourth方法，同时将model中key为user的数据复制给loginfourth方法中user参数，然后在resultfourth.jsp的页面上可以通过${resquestScope.user.username}来获取相应的数据。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringMVC/%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/@ModelAttribute%E6%B3%A8%E8%A7%A3/" data-id="ckk2gq3uc001iz8pq9irufhvr" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SpringMVC/SpringMVC整合ElasticSearch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringMVC/SpringMVC%E6%95%B4%E5%90%88ElasticSearch/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.755Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="SpringMVC整合ElasticSearch步骤如下："><a href="#SpringMVC整合ElasticSearch步骤如下：" class="headerlink" title="SpringMVC整合ElasticSearch步骤如下："></a>SpringMVC整合ElasticSearch步骤如下：</h4><h5 id="1、在maven引入Elastic-jar包"><a href="#1、在maven引入Elastic-jar包" class="headerlink" title="1、在maven引入Elastic jar包"></a>1、在maven引入Elastic jar包</h5><p>在pom.xml中添加如下内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>6.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>6.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.elasticsearch.client<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>elasticsearch-rest-high-level-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>6.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-elasticsearch<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="2、在applicationContext-xml文件中引入spring-elastic-xml"><a href="#2、在applicationContext-xml文件中引入spring-elastic-xml" class="headerlink" title="2、在applicationContext.xml文件中引入spring-elastic.xml"></a>2、在applicationContext.xml文件中引入spring-elastic.xml</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">resource</span>=<span class="string">&quot;spring-elastic.xml&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="3、创建spring-elastic-xml文件，配置文件内容如下："><a href="#3、创建spring-elastic-xml文件，配置文件内容如下：" class="headerlink" title="3、创建spring-elastic.xml文件，配置文件内容如下："></a>3、创建spring-elastic.xml文件，配置文件内容如下：</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://www.springframework.org/schema/beans&quot;</span></span></span><br><span class="line"><span class="tag">     	<span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">     	<span class="attr">xmlns:elasticsearch</span>=<span class="string">&quot;http://www.springframework.org/schema/data/elasticsearch&quot;</span></span></span><br><span class="line"><span class="tag">     	<span class="attr">xmlns:context</span>=<span class="string">&quot;http://www.springframework.org/schema/context&quot;</span></span></span><br><span class="line"><span class="tag">     	<span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">http://www.springframework.org/schema/data/elasticsearch</span></span></span><br><span class="line"><span class="tag"><span class="string">http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">http://www.springframework.org/schema/context/spring-context.xsd&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">&quot;com.elastic&quot;</span> /&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 必须指向存放repository文件的包 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">elasticsearch:repositories</span> <span class="attr">base-package</span>=<span class="string">&quot;com.climber.elastic.repository&quot;</span> /&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置Client --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">elasticsearch:transport-client</span> <span class="attr">id</span>=<span class="string">&quot;client&quot;</span></span></span><br><span class="line"><span class="tag">                              		<span class="attr">cluster-nodes</span>=<span class="string">&quot;192.168.0.116:9300&quot;</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置搜索模板 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;elasticsearchTemplate&quot;</span></span></span><br><span class="line"><span class="tag">    		<span class="attr">class</span>=<span class="string">&quot;org.springframework.data.elasticsearch.core.ElasticsearchTemplate&quot;</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">&quot;client&quot;</span></span></span><br><span class="line"><span class="tag">               			<span class="attr">ref</span>=<span class="string">&quot;client&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="4、创建Bean"><a href="#4、创建Bean" class="headerlink" title="4、创建Bean"></a>4、创建Bean</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">创建Stu，具体代码如下：</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.climber.elastic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.data.annotation.Id;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.elasticsearch.annotations.Document;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.elasticsearch.annotations.Field;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.elasticsearch.annotations.FieldType;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">\* index：是否设置索引， store是否存储数据，type:数据类型，analyzer：分词粒度选择，searchAnalyzer：查询进行分词处理</span></span><br><span class="line"><span class="comment">\* ik_smart：进行最小粒度分词，ik_max_word进行最大粒度分词</span></span><br><span class="line"><span class="comment">\* <span class="doctag">@author</span> Derlin</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Document(indexName = &quot;stu&quot;, type = &quot;z`&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Stu</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@Field(index=true, store = true, type = FieldType.Long)</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(index = true, analyzer = &quot;ik_max_word&quot;, store = true, searchAnalyzer = &quot;ik_smart&quot;, type = FieldType.Text)</span></span><br><span class="line">    <span class="keyword">private</span> String stuId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(index = true, analyzer = &quot;ik_max_word&quot;, store = true, searchAnalyzer = &quot;ik_smart&quot;, type = FieldType.Text)</span></span><br><span class="line">    <span class="keyword">private</span> String stuName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(index = true, store = true, type = FieldType.Date)</span></span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Field(index = true, analyzer = &quot;ik_max_word&quot;, store = true, searchAnalyzer = &quot;ik_smart&quot;, type = FieldType.Text)</span></span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Stu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Stu</span><span class="params">(Long id, String stuId, String stuName, Date createTime)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.stuId = stuId;</span><br><span class="line">        <span class="keyword">this</span>.stuName = stuName;</span><br><span class="line">        <span class="keyword">this</span>.createTime = createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Long <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Long id)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStuId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> stuId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStuId</span><span class="params">(String stuId)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.stuId = stuId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getStuName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> stuName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStuName</span><span class="params">(String stuName)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.stuName = stuName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getCreateTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCreateTime</span><span class="params">(Date createTime)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.createTime = createTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="5、通过Repository进行CURD，定义Repository如下"><a href="#5、通过Repository进行CURD，定义Repository如下" class="headerlink" title="5、通过Repository进行CURD，定义Repository如下"></a>5、通过Repository进行CURD，定义Repository如下</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">StudentRepository</span> <span class="keyword">extends</span> <span class="title">ElasticsearchRepository</span>&lt;<span class="title">Stu</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@param</span> stuId</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function">Stu <span class="title">getByStuId</span><span class="params">(String stuId)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@param</span> stuName</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function">List&lt;Stu&gt; <span class="title">getListByStuName</span><span class="params">(String stuName)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@param</span> stuName</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@param</span> pageable</span></span><br><span class="line"><span class="comment">    \* <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="function">Page&lt;Stu&gt; <span class="title">getPageByStuName</span><span class="params">(String stuName, Pageable pageable)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">在Service层定义接口</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createDocument</span><span class="params">(Stu stu)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Stu <span class="title">getByStuId</span><span class="params">(String stuId)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">定义接口实现</span><br><span class="line">    </span><br><span class="line"><span class="meta">@Service(&quot;esService &quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EsServiceImp</span> <span class="keyword">implements</span> <span class="title">EsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> StudentRepository studentRepository;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createDocument</span><span class="params">(Stu stu)</span> </span>&#123;</span><br><span class="line">    	studentRepository.save(stu);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Stu <span class="title">getByStuId</span><span class="params">(String stuId)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> studentRepository.getByStuId(stuId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Controller调用如下</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/es&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EsController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> EsService esService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/elastic&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">elastic</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Stu st = <span class="keyword">new</span> Stu(<span class="number">6L</span>, <span class="string">&quot;006&quot;</span>, <span class="string">&quot;小陈&quot;</span>, <span class="keyword">new</span> Date());</span><br><span class="line">        esService.createDocument(st);</span><br><span class="line">        Stu stu = esService.getByStuId(<span class="string">&quot;006&quot;</span>);</span><br><span class="line">        System.out.println(stu.getStuName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>执行<a target="_blank" rel="noopener" href="http://localhost:8080/elastic/es/elastic.do%E5%90%8E%EF%BC%8C%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5http://192.168.0.116:9200/stu/_search?q=*&amp;pretty%E5%8D%B3%E5%8F%AF%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%B7%B2%E4%BF%9D%E5%AD%98%E5%88%B0Elastic">http://localhost:8080/elastic/es/elastic.do后，用浏览器输入http://192.168.0.116:9200/stu/_search?q=*&amp;pretty即可查看数据已保存到Elastic</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringMVC/SpringMVC%E6%95%B4%E5%90%88ElasticSearch/" data-id="ckk2gq3tn0014z8pq8o3ib0r9" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SpringBoot/20_SpringBoot文件上传和下载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringBoot/20_SpringBoot%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.609Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>在application.properties 中增加上传文件存放的路径配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#文件上传目录</span><br><span class="line">file.upload.url=E:/test</span><br></pre></td></tr></table></figure>
+<h1 id="controller-层"><a href="#controller-层" class="headerlink" title="controller 层"></a>controller 层</h1><p>上传文件和下载文件都比较简单，我们就直接在controller层来编写。也不用在pom.xml 中增加什么依赖。所以直接上代码。在controller 包下创建一个file包，在file 包下创建一个FileController 类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(<span class="string">&quot;file&quot;</span>)</span><br><span class="line">@Slf4j</span><br><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">FileController</span> </span>&#123;</span><br><span class="line">    @Value(<span class="string">&quot;$&#123;file.upload.url&#125;&quot;</span>)</span><br><span class="line">    private <span class="built_in">String</span> uploadFilePath;</span><br><span class="line"></span><br><span class="line">        @RequestMapping(<span class="string">&quot;/upload&quot;</span>)</span><br><span class="line">    public <span class="built_in">String</span> <span class="function"><span class="title">httpUpload</span>(<span class="params">@RequestParam(<span class="string">&quot;files&quot;</span>) MultipartFile files[]</span>)</span>&#123;</span><br><span class="line">        JSONObject object=<span class="keyword">new</span> JSONObject();</span><br><span class="line">        <span class="keyword">for</span>(int i=<span class="number">0</span>;i&lt;files.length;i++)&#123;</span><br><span class="line">            <span class="built_in">String</span> fileName = files[i].getOriginalFilename();  <span class="comment">// 文件名</span></span><br><span class="line">            File dest = <span class="keyword">new</span> File(uploadFilePath +<span class="string">&#x27;/&#x27;</span>+ fileName);</span><br><span class="line">            <span class="keyword">if</span> (!dest.getParentFile().exists()) &#123;</span><br><span class="line">                dest.getParentFile().mkdirs();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                files[i].transferTo(dest);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                log.error(<span class="string">&quot;&#123;&#125;&quot;</span>,e);</span><br><span class="line">                object.put(<span class="string">&quot;success&quot;</span>,<span class="number">2</span>);</span><br><span class="line">                object.put(<span class="string">&quot;result&quot;</span>,<span class="string">&quot;程序错误，请重新上传&quot;</span>);</span><br><span class="line">                <span class="keyword">return</span> object.toString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        object.put(<span class="string">&quot;success&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        object.put(<span class="string">&quot;result&quot;</span>,<span class="string">&quot;文件上传成功&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> object.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码看起来有点多，其实就是一个上传的方法，首先通过 MultipartFile 接收文件。这里我用的是file[] 数组接收文件，这是为了兼容多文件上传的情况，如果只用file 接收，然后在接口上传多个文件的话，只会接收最后一个文件。这里大家注意一下。看自己的需求，我这里兼容多文件所以用数组接收。</p>
+<p>然后遍历files 获取文件，下面这段代码是判断文件在所在目录是否存在，如果不存在就创建对应的目录。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">File dest = <span class="keyword">new</span> File(uploadFilePath +<span class="string">&#x27;/&#x27;</span>+ fileName);</span><br><span class="line">           <span class="keyword">if</span> (!dest.getParentFile().exists()) &#123;</span><br><span class="line">               dest.getParentFile().mkdirs();</span><br><span class="line">           &#125;</span><br><span class="line">files[i].transferTo(dest);</span><br></pre></td></tr></table></figure>
+<p>就是将文件存放到对应的服务器，这里有一点需要说明一下，如果我们上传重复的文件会怎么样么？上传重复的文件不会报错，后上传的文件会直接覆盖已经上传的文件。</p>
+<p>整体代码就是这样。现在就可以实现文件的上传操作。</p>
+<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>我们写好之后，基本上传功能就已经实现了，我们现在来测试一下。启动项目后我们用postman 请求，因为我们需要上传文件，用get 方式请求不了。</p>
+<p>可以看到文件上传成功了，由此可见，springboot文件上传一个方法就搞定了。</p>
+<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h1><p>其实文件下载，不太建议用接口做，因为文件下载一般都是下载一些静态文件，我们可以先将文件处理好，然后通过Nginx 服务下载静态文件，这样速度会快很多。但是这里我们还是写一下。代码也很简单，就一个方法，也写在fileController 类中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(<span class="string">&quot;/download&quot;</span>)</span><br><span class="line">   public <span class="built_in">String</span> <span class="function"><span class="title">fileDownLoad</span>(<span class="params">HttpServletResponse response, @RequestParam(<span class="string">&quot;fileName&quot;</span>) <span class="built_in">String</span> fileName</span>)</span>&#123;</span><br><span class="line">       File file = <span class="keyword">new</span> File(downloadFilePath +<span class="string">&#x27;/&#x27;</span>+ fileName);</span><br><span class="line">       <span class="keyword">if</span>(!file.exists())&#123;</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;下载文件不存在&quot;</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       response.reset();</span><br><span class="line">       response.setContentType(<span class="string">&quot;application/octet-stream&quot;</span>);</span><br><span class="line">       response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">       response.setContentLength((int) file.length());</span><br><span class="line">       response.setHeader(<span class="string">&quot;Content-Disposition&quot;</span>, <span class="string">&quot;attachment;filename=&quot;</span> + fileName );</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="title">try</span>(<span class="params">BufferedInputStream bis = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(file));</span>)</span> &#123;</span><br><span class="line">           byte[] buff = <span class="keyword">new</span> byte[<span class="number">1024</span>];</span><br><span class="line">           OutputStream os  = response.getOutputStream();</span><br><span class="line">           int i = <span class="number">0</span>;</span><br><span class="line">           <span class="keyword">while</span> ((i = bis.read(buff)) != -<span class="number">1</span>) &#123;</span><br><span class="line">               os.write(buff, <span class="number">0</span>, i);</span><br><span class="line">               os.flush();</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">           log.error(<span class="string">&quot;&#123;&#125;&quot;</span>,e);</span><br><span class="line">           <span class="keyword">return</span> <span class="string">&quot;下载失败&quot;</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="string">&quot;下载成功&quot;</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>代码也很简单，就是根据文件名判断是否存在文件，不存在就提示没有文件，存在就将文件下载下来。response设置返回文件的格式，以文件流的方式返回，采用utf-8 字符集，设置下载后的文件名。然后就是以文件流的方式下载文件了。</p>
+<p>测试的话也简单，我们启动项目，访问接口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//localhost:9090/zlflovemm/file/download?fileName=11</span></span><br><span class="line">http:<span class="comment">//localhost:9090/zlflovemm/file/download?fileName=1.rar</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-6296056/t0ad4l1ce4.png?imageView2/2/w/1620" alt="img"></p>
+<p><img src="https://ask.qcloudimg.com/http-save/yehe-6296056/ysarhs0znz.png?imageView2/2/w/1620" alt="img"></p>
+<p>可以看到如果文件存在，会直接下载，不会提示下载成功或者失败。</p>
+<h1 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h1><p>删除文件是很简单的，我这里讲一下删除文件下所有文件夹和文件。并做一个定时任务，每天清理一次。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">@Scheduled(cron=<span class="string">&quot;0 0 3 * * ?&quot;</span>)</span><br><span class="line">private <span class="keyword">void</span> <span class="function"><span class="title">deleteFiles</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    deleteFile(<span class="keyword">new</span> File(deleteFilePath));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public <span class="keyword">void</span> <span class="function"><span class="title">deleteFile</span>(<span class="params">File file</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//判断文件不为null或文件目录存在</span></span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">null</span> || !file.exists())&#123;</span><br><span class="line">        log.info(<span class="string">&quot;暂无文件&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//取得这个目录下的所有子文件对象</span></span><br><span class="line">    File[] files = file.listFiles();</span><br><span class="line">    <span class="comment">//遍历该目录下的文件对象</span></span><br><span class="line">    <span class="keyword">for</span> (File f: files)&#123;</span><br><span class="line">        <span class="comment">//打印文件名</span></span><br><span class="line">        <span class="built_in">String</span> name = f.getName();</span><br><span class="line">        log.info(name);</span><br><span class="line">        <span class="comment">//判断子目录是否存在子目录,如果是文件则删除</span></span><br><span class="line">        <span class="keyword">if</span> (f.isDirectory())&#123;</span><br><span class="line">            deleteFile(f);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            f.delete();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除空文件夹  for循环已经把上一层节点的目录清空。</span></span><br><span class="line">    file.delete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringBoot/20_SpringBoot%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckk2gq3to0015z8pq28ep6p7q" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SpringBoot/18_SpringBoot与安全" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringBoot/18_SpringBoot%E4%B8%8E%E5%AE%89%E5%85%A8/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.606Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * anyRequest          |   匹配所有请求路径</span></span><br><span class="line"><span class="comment">     * access              |   SpringEl表达式结果为true时可以访问</span></span><br><span class="line"><span class="comment">     * anonymous           |   匿名可以访问</span></span><br><span class="line"><span class="comment">     * denyAll             |   用户不能访问</span></span><br><span class="line"><span class="comment">     * fullyAuthenticated  |   用户完全认证可以访问（非remember-me下自动登录）</span></span><br><span class="line"><span class="comment">     * hasAnyAuthority     |   如果有参数，参数表示权限，则其中任何一个权限可以访问</span></span><br><span class="line"><span class="comment">     * hasAnyRole          |   如果有参数，参数表示角色，则其中任何一个角色可以访问</span></span><br><span class="line"><span class="comment">     * hasAuthority        |   如果有参数，参数表示权限，则其权限可以访问</span></span><br><span class="line"><span class="comment">     * hasIpAddress        |   如果有参数，参数表示IP地址，如果用户IP和参数匹配，则可以访问</span></span><br><span class="line"><span class="comment">     * hasRole             |   如果有参数，参数表示角色，则其角色可以访问</span></span><br><span class="line"><span class="comment">     * permitAll           |   用户可以任意访问</span></span><br><span class="line"><span class="comment">     * rememberMe          |   允许通过remember-me登录的用户访问</span></span><br><span class="line"><span class="comment">     * authenticated       |   用户登录后可访问</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringBoot/18_SpringBoot%E4%B8%8E%E5%AE%89%E5%85%A8/" data-id="ckk2gq3tm0011z8pqdkx4d18g" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SpringBoot/19_SpringBoot与swagger" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringBoot/19_SpringBoot%E4%B8%8Eswagger/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.606Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>常用注解：<br>- <strong>@Api()**用于类；<br>表示标识这个类是swagger的资源<br>- **@ApiOperation()**用于方法；<br>表示一个http请求的操作<br>- **@ApiParam()**用于方法，参数，字段说明；<br>表示对参数的添加元数据（说明或是否必填等）<br>- **@ApiModel()**用于类<br>表示对类进行说明，用于参数用实体类接收<br>- **@ApiModelProperty()**用于方法，字段<br>表示对model属性的说明或者数据操作更改<br>- **@ApiIgnore()**用于类，方法，方法参数<br>表示这个方法或者类被忽略<br>- **@ApiImplicitParam()</strong> 用于方法<br>表示单独的请求参数<br>- <strong>@ApiImplicitParams()</strong> 用于方法，包含多个 @ApiImplicitParam</p>
+<p>具体使用举例说明：<br><strong>@Api()</strong><br>用于类；表示标识这个类是swagger的资源<br>tags–表示说明<br>value–也是说明，可以使用tags替代<br><strong>但是tags如果有多个值，会生成多个list</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Api(value&#x3D;&quot;用户controller&quot;,tags&#x3D;&#123;&quot;用户操作接口&quot;&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111123713" alt="这里写图片描述"></p>
+<p><strong>@ApiOperation()</strong> 用于方法；表示一个http请求的操作<br>value用于方法描述<br>notes用于提示内容<br>tags可以重新分组（视情况而用）<br><strong>@ApiParam()</strong> 用于方法，参数，字段说明；表示对参数的添加元数据（说明或是否必填等）<br>name–参数名<br>value–参数说明<br>required–是否必填</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">@Api(value&#x3D;&quot;用户controller&quot;,tags&#x3D;&#123;&quot;用户操作接口&quot;&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     @ApiOperation(value&#x3D;&quot;获取用户信息&quot;,tags&#x3D;&#123;&quot;获取用户信息copy&quot;&#125;,notes&#x3D;&quot;注意问题点&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     @GetMapping(&quot;&#x2F;getUserInfo&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     public User getUserInfo(@ApiParam(name&#x3D;&quot;id&quot;,value&#x3D;&quot;用户id&quot;,required&#x3D;true) Long id,@ApiParam(name&#x3D;&quot;username&quot;,value&#x3D;&quot;用户名&quot;) String username) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F; userService可忽略，是业务逻辑</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      User user &#x3D; userService.getUserInfo();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      return user;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111123725" alt="这里写图片描述"></p>
+<p>**@ApiModel()**用于类 ；表示对类进行说明，用于参数用实体类接收<br>value–表示对象名<br>description–描述<br>都可省略<br>**@ApiModelProperty()**用于方法，字段； 表示对model属性的说明或者数据操作更改<br>value–字段说明<br>name–重写属性名字<br>dataType–重写属性类型<br>required–是否必填<br>example–举例说明<br>hidden–隐藏</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">@ApiModel(value&#x3D;&quot;user对象&quot;,description&#x3D;&quot;用户对象user&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class User implements Serializable&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private static final long serialVersionUID &#x3D; 1L;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     @ApiModelProperty(value&#x3D;&quot;用户名&quot;,name&#x3D;&quot;username&quot;,example&#x3D;&quot;xingguo&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     private String username;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     @ApiModelProperty(value&#x3D;&quot;状态&quot;,name&#x3D;&quot;state&quot;,required&#x3D;true)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      private Integer state;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      private String password;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      private String nickName;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      private Integer isDeleted;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      @ApiModelProperty(value&#x3D;&quot;id数组&quot;,hidden&#x3D;true)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      private String[] ids;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      private List&lt;String&gt; idList;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     &#x2F;&#x2F;省略get&#x2F;set</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">  @ApiOperation(&quot;更改用户信息&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  @PostMapping(&quot;&#x2F;updateUserInfo&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  public int updateUserInfo(@RequestBody @ApiParam(name&#x3D;&quot;用户对象&quot;,value&#x3D;&quot;传入json格式&quot;,required&#x3D;true) User user)&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     int num &#x3D; userService.updateUserInfo(user);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">     return num;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111123735" alt="这里写图片描述"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111123743" alt="这里写图片描述"></p>
+<p>**@ApiIgnore()**用于类或者方法上，可以不被swagger显示在页面上<br>比较简单, 这里不做举例</p>
+<p><strong>@ApiImplicitParam()</strong> 用于方法<br>表示单独的请求参数<br><strong>@ApiImplicitParams()</strong> 用于方法，包含多个 @ApiImplicitParam<br>name–参数ming<br>value–参数说明<br>dataType–数据类型<br>paramType–参数类型<br>example–举例说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@ApiOperation(&quot;查询测试&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@GetMapping(&quot;select&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;@ApiImplicitParam(name&#x3D;&quot;name&quot;,value&#x3D;&quot;用户名&quot;,dataType&#x3D;&quot;String&quot;, paramType &#x3D; &quot;query&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@ApiImplicitParams(&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@ApiImplicitParam(name&#x3D;&quot;name&quot;,value&#x3D;&quot;用户名&quot;,dataType&#x3D;&quot;string&quot;, paramType &#x3D; &quot;query&quot;,example&#x3D;&quot;xingguo&quot;),</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@ApiImplicitParam(name&#x3D;&quot;id&quot;,value&#x3D;&quot;用户id&quot;,dataType&#x3D;&quot;long&quot;, paramType &#x3D; &quot;query&quot;)&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public void select()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果图：<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111123752" alt="这里写图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringBoot/19_SpringBoot%E4%B8%8Eswagger/" data-id="ckk2gq3tn0013z8pqbp250odu" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-SpringBoot/17_SpringBoot与任务" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringBoot/17_SpringBoot%E4%B8%8E%E4%BB%BB%E5%8A%A1/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.604Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="一、异步任务"><a href="#一、异步任务" class="headerlink" title="一、异步任务"></a>一、异步任务</h4><p>在Java应用中，绝大多数情况下都是通过同步的方式来实现交互处理的；但是在处理与第三方系统交互的时候，容易造成响应迟缓的情况，之前大部分都是使用多线程来完成此类任务，其实，在Spring 3.x之后，就已经内置了@Async来完美解决这个问题。</p>
+<p><strong>两个注解：@EnableAysnc、@Aysnc</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableAsync</span> <span class="comment">//开启异步注解</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Springboot04TaskApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Springboot04TaskApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Async</span> <span class="comment">//告诉Spring这是一个异步方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;处理数据中&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="二、定时任务"><a href="#二、定时任务" class="headerlink" title="二、定时任务"></a>二、定时任务</h4><p>项目开发中经常需要执行一些定时任务，比如需要在每天凌晨时候，分析一次前一天的日志信息。Spring为我们提供了异步执行任务调度的方式，提供TaskExecutor、TaskScheduler接口。</p>
+<p><strong>两个注解：@EnableScheduling、@Scheduled</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableScheduling</span> <span class="comment">//开启基于注解的定时任务</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Springboot04TaskApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(Springboot04TaskApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ScheduledService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * second(秒),minute(分),hour(时),day of month(日),month(月),day of week(周几).</span></span><br><span class="line"><span class="comment">     * 0 * * * * MON-FRI</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Scheduled(cron = &quot;0 * * * * MON-FRI&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;hello ...&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>cron表达式</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>允许值</th>
+<th>允许的特殊字符</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>秒</td>
+<td>0-59</td>
+<td>, -* /</td>
+</tr>
+<tr>
+<td>分</td>
+<td>0-59</td>
+<td>, -* /</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>0-23</td>
+<td>, -* /</td>
+</tr>
+<tr>
+<td>日期</td>
+<td>1-31</td>
+<td>, -* /</td>
+</tr>
+<tr>
+<td>月份</td>
+<td>1-12</td>
+<td>, -* /</td>
+</tr>
+<tr>
+<td>星期</td>
+<td>0-7或SUN-SAT 0,7是SUN</td>
+<td>, -* ? / L C #</td>
+</tr>
+</tbody></table>
+<p><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111123702.png" alt="image-20200903171928344"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringBoot/17_SpringBoot%E4%B8%8E%E4%BB%BB%E5%8A%A1/" data-id="ckk2gq3tm0010z8pqbbcb2om0" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/18/%E4%BA%91%E8%AE%A1%E7%AE%97/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/03_Redis%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/02_RabbitMQ%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/01_%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97%E7%9A%84%E6%96%B9%E6%A1%88%E4%BB%8B%E7%BB%8D/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%85%B6%E4%BB%96%E5%B0%8F%E6%8A%80%E5%B7%A7/github%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="连接数据库 -h 接数据库名  mysql -h localhost -u root -p  创建数据库  create database 数据库名; create database 数据库名 character set gbk&#x2F;utf-8; db.opt文件显示编码   查看数据库  show databases;   查看数据库(可查看编码)  show create database web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/18/MySql/MySql%E6%93%8D%E4%BD%9C%E5%92%8C%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="连接数据库 -h 接数据库名  mysql -h localhost -u root -p  创建数据库  create database 数据库名; create database 数据库名 character set gbk&#x2F;utf-8; db.opt文件显示编码   查看数据库  show databases;   查看数据库(可查看编码)  show create database web">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-18T11:01:37.523Z">
+<meta property="article:modified_time" content="2020-12-22T09:19:30.507Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-MySql/MySql操作和命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/MySql/MySql%E6%93%8D%E4%BD%9C%E5%92%8C%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.523Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>连接数据库 -h 接数据库名</p>
+<ul>
+<li><p>mysql -h localhost -u root -p</p>
+</li>
+<li><p>创建数据库</p>
+<ul>
+<li>create database 数据库名;</li>
+<li>create database 数据库名 character set gbk/utf-8;</li>
+<li>db.opt文件显示编码</li>
+</ul>
+</li>
+<li><p>查看数据库</p>
+<ul>
+<li>show databases;</li>
+</ul>
+</li>
+<li><p>查看数据库(可查看编码)</p>
+<ul>
+<li>show create database web08;</li>
+</ul>
+</li>
+<li><p>删除数据库</p>
+<ul>
+<li>drop dababase 数据库名;</li>
+</ul>
+</li>
+<li><p>切换数据库</p>
+<ul>
+<li>user 数据库名;</li>
+</ul>
+</li>
+<li><p>查看正在使用的数据库</p>
+<ul>
+<li>select database();</li>
+</ul>
+</li>
+<li><p>创建表</p>
+<ul>
+<li><p>​    create table 表名(  </p>
+<p>​        字段名 类型（长度） [约束],  </p>
+<p>​        字段名 类型（长度） [约束]</p>
+<p>​    );</p>
+</li>
+<li><p>​    字符类型：varchar(n)</p>
+</li>
+<li><p>​    单表约束:</p>
+</li>
+<li><p>主键约束:primary key，要求被修饰的字段唯一和非空     </p>
+</li>
+<li><p>唯一约束:unique,要求被修饰的字段唯一     </p>
+</li>
+<li><p>非空约束:not null,要求被修饰的字段非空查看表show tables;</p>
+</li>
+</ul>
+</li>
+<li><p>查看表结构</p>
+<ul>
+<li>desc 表名;</li>
+<li>– show OPEN TABLES where In_use &gt; 0;   –查询mysql锁情况<br>– show processlist;   –查看正在运行sql</li>
+</ul>
+</li>
+<li><p>删除表</p>
+<ul>
+<li>drop table 表名;</li>
+</ul>
+</li>
+<li><p>修改表</p>
+<ul>
+<li>alter table 表名 add 字段名 类型(长度) [约束];</li>
+<li>alter table 名表 modify 要修改的字段名 类型(长度) [约束];</li>
+<li>alter table 表名 change 旧列名 新列名 类型(长度) [约束];</li>
+<li>alter table 表名 drop 列名;</li>
+<li>alter table 名 add index 索引名(字段名，字段名) ;</li>
+</ul>
+</li>
+<li><p>修改表名</p>
+<ul>
+<li>rename table 表名 to 新表名;</li>
+</ul>
+</li>
+<li><p>修改表的字符集</p>
+<ul>
+<li>alter table 表名 character set 编码;</li>
+</ul>
+</li>
+<li><p>查看当前表的编码</p>
+<ul>
+<li>show create table 表名;</li>
+</ul>
+</li>
+<li><p>开启事务</p>
+<ul>
+<li>start transaction;</li>
+</ul>
+</li>
+<li><p>插入记录</p>
+<ul>
+<li>insert into 表名(列名1,列名2,列名3…) values(值1,值2,值3…);</li>
+<li>insert into 表名(值1,值2,值3);</li>
+<li>插入中文乱码问题解决方法  <ol>
+<li>可以直接修改数据库安装目录my.ini第57行数据库客户端编码 </li>
+<li>set names 编码</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>修改表记录</p>
+<ul>
+<li>update 表名 set 字段名 = 值,字段名 = 值 where 条件字段 = 字段值 and 条件字段 = 字段值;</li>
+</ul>
+</li>
+<li><p>删除记录</p>
+<ul>
+<li>delete from 表名 where 字段名 = 值;</li>
+<li>全表数据删除delete from和truncate table区别</li>
+<li>delete逐条删除记录，配合事务可以将删除的记录找回,自增不重置</li>
+<li>truncate直接将表销毁再重建一张一样的表，删除的数据无法找回,自增重置</li>
+</ul>
+</li>
+<li><p>查询</p>
+<ul>
+<li>select 列名1，列名2 from 表名 where 字段名 = 值;</li>
+</ul>
+</li>
+<li><p>排序查询</p>
+<ul>
+<li>select …order by 字段1 desc/asc,字段2 desc/asc;</li>
+</ul>
+</li>
+<li><p>聚合查询,聚合函数不统计null</p>
+<ul>
+<li>select sum(字段) from 表名 条件;</li>
+<li>select avg(字段) from 表名 条件;</li>
+<li>select count(字段) from 表名 条件;</li>
+</ul>
+</li>
+<li><p>分组查询</p>
+<ul>
+<li>select 字段 from 表名 group by 分类id;</li>
+<li>select 字段 from 表名 group by 分类id having 分组条件;</li>
+</ul>
+</li>
+<li><p>分页查询limit关键字</p>
+<ul>
+<li>select * from 表名 limit 起始位置（页数-1 * 每页显示数目）,每页显示数目;</li>
+</ul>
+</li>
+<li><p>多表查询</p>
+<ul>
+<li>交叉连接:select * from 表A,表B;</li>
+<li>显示内连接:select * from 表A inner join 表B on 表A字段 = 表B字段;</li>
+<li>隐式内连接:select * from 表A c,product p where c.cid = p.category_id;</li>
+<li>左外连接:select * from 表A left join 表B on 表A字段 = 表B字段;</li>
+<li>右外连接:select * from 表A right join 表B on 表A字段 = 表B字段;</li>
+</ul>
+</li>
+<li><p>子查询</p>
+<ul>
+<li>select * from 表A where 字段=(select 字段 from 表B where 条件);</li>
+</ul>
+</li>
+<li><p>外键约束,可保证数据的完整性</p>
+<ul>
+<li><p>添加外键约束：alter table 从表 add [constraint][外键名称] foreign key(从表外键字段名) references 主表(主表的主键);</p>
+</li>
+<li><p>删除外键：alter table 从表 drop foreign key 外键名称;</p>
+</li>
+<li><p>多对多：alter table 从表(stu_course) add foreign key(sno) references stu(id);    </p>
+<ul>
+<li>alter table 从表(stu_course) add foreign key(cno) references course(id);</li>
+</ul>
+</li>
+<li><p>一对一：</p>
+<p>1、从表的外键唯一约束和主表的主键建立    </p>
+<p>2、主键对主键建立</p>
+</li>
+</ul>
+</li>
+<li><p>mysql查看默认隔离级别：</p>
+<ul>
+<li>select @@tx_isolation;</li>
+</ul>
+</li>
+<li><p>事务隔离级别</p>
+<ul>
+<li>read uncommitted:读取尚未提交的数据：哪个问题都不能解决</li>
+<li>read committed:读取已提交数据：可以解决脏读–oracle默认</li>
+<li>repeatable read:重复读：可以解决脏读和不可重复读–mysql默认</li>
+<li>serializable:串行化：可以解决脏读、不可重复读和虚读–相当于锁表</li>
+</ul>
+</li>
+<li><p>设置隔离级别：</p>
+<ul>
+<li>set session transaction isolation level + 隔离级别</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/MySql/MySql%E6%93%8D%E4%BD%9C%E5%92%8C%E5%91%BD%E4%BB%A4/" data-id="ckk2gq3t9000cz8pq5lt7evg1" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/18/MySql/MySql%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/18/Maven/Maven/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/18/%E4%BA%91%E8%AE%A1%E7%AE%97/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/03_Redis%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/02_RabbitMQ%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/01_%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97%E7%9A%84%E6%96%B9%E6%A1%88%E4%BB%8B%E7%BB%8D/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%85%B6%E4%BB%96%E5%B0%8F%E6%8A%80%E5%B7%A7/github%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

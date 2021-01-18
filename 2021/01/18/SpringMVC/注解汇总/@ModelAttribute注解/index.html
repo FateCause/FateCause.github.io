@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="@ModelAttribute 　@ModelAttribute最主要的作用是将数据添加到模型对象中，用于视图页面展示时使用。@ModelAttribute等价于 model.addAttribute(“attributeName”, abc); 但是根据@ModelAttribute注释的位置不同，和其他注解组合使用，致使含义有所不同。 　　@ModelAttribute和@RequestMap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/18/SpringMVC/%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/@ModelAttribute%E6%B3%A8%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="@ModelAttribute 　@ModelAttribute最主要的作用是将数据添加到模型对象中，用于视图页面展示时使用。@ModelAttribute等价于 model.addAttribute(“attributeName”, abc); 但是根据@ModelAttribute注释的位置不同，和其他注解组合使用，致使含义有所不同。 　　@ModelAttribute和@RequestMap">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-18T11:01:37.760Z">
+<meta property="article:modified_time" content="2021-01-11T03:54:45.777Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-SpringMVC/注解汇总/@ModelAttribute注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/SpringMVC/%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/@ModelAttribute%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.760Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="ModelAttribute"><a href="#ModelAttribute" class="headerlink" title="@ModelAttribute"></a><strong>@ModelAttribute</strong></h1><p> 　@ModelAttribute最主要的作用是将数据添加到模型对象中，用于视图页面展示时使用。@ModelAttribute等价于 model.addAttribute(“attributeName”, abc); 但是根据@ModelAttribute注释的位置不同，和其他注解组合使用，致使含义有所不同。</p>
+<p>　　@ModelAttribute和@RequestMapping分开修饰方法时，@ModelAttribute会优先于@RequestMapping执行，也就是会在Controller中每个方法执行前被执行，所以当一个Controller中有映射到多个Url时，需要谨慎使用；但是@ModelAttribute和@RequestMapping同事修饰一个方法时和他们单独修改方法时所代表的的意思是不同的，这一点要特别注意。</p>
+<h2 id="属性介绍："><a href="#属性介绍：" class="headerlink" title="属性介绍："></a><strong>属性介绍：</strong></h2><ol>
+<li>value：类型是为String，代表绑定的属性名称</li>
+</ol>
+<h2 id="使用方式："><a href="#使用方式：" class="headerlink" title="使用方式："></a><strong>使用方式：</strong></h2><ol>
+<li>方法返回值为void，@ModelAttribute注解没有指定任何属性，这样的话需要将Model或者map传入方法中，如下：key为user1，value为User对象，可以用 ${requestScope.user1.userName} 取出</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　@ModelAttribute</span><br><span class="line">&#x2F;&#x2F;@ModelAttribute 没有指定值,且被修饰的方法返回值为void,则需要借助map或者model将数据模型放入request域</span><br><span class="line">public void getUser(Map&lt;String, Object&gt; map) &#123;</span><br><span class="line">    System.out.println(&quot;ModelAttribute1..&quot;);</span><br><span class="line">    map.put(&quot;user1&quot;, new User(&quot;kelin&quot;,&quot;123aaa&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　2.方法返回值为普通的pojo，@ModelAttribute注解没有指定任何属性，这样的话，request域中存入的对象名字默认为类型首字母小写，如下：key为user(类型首字母小写)，value为User对象，可以用 ${requestScope.user.userName} 取出</p>
+<p>　　<strong>注意：当@ModelAttrbute修改方法时，这里是将返回数据user1对象放到model模型中而不是将方法上的参数userName和age放到model模型中返回给页面中使用</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　@ModelAttribute</span><br><span class="line">&#x2F;&#x2F;@ModelAttribute 没有指定值,且被修饰方法有pojo类型的返回值,则request域中 key为返回值类型第一个字母小写的字符串，value为返回值</span><br><span class="line">public User getUser(@RequestParam(&quot;userName&quot;) String userName,@RequestParam(&quot;age&quot;) int age) &#123; 　　　　User user1&#x3D;new User();　　　　user.setUserName(userName);　　　　user.setAge(age);　　　　return user1; 　　&#125;</span><br></pre></td></tr></table></figure>
+<p>　　3.方法返回值为普通的pojo，@ModelAttribute注解指定了value属性，这样的话，request域中就放入了一个对象，如下：key为user2，value为User对象，可以用 ${requestScope.user2.userName} 取出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">　　@ModelAttribute(&quot;user2&quot;)</span><br><span class="line">&#x2F;&#x2F;@ModelAttribute 的值就是request域中的key,被该注解修饰的方法的返回值为对应的value</span><br><span class="line">public User getUser() &#123;</span><br><span class="line">    System.out.println(&quot;ModelAttribute3..&quot;);</span><br><span class="line">    return new User(&quot;kelin&quot;,&quot;123aaa&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　4.@ModelAttribute 修饰方法参数（最常用），参数直接封装到对象中，比如常用的 pageNo，pageSize..,</p>
+<p>　　<strong>注意：这里@ModelAttribute修饰的是方法上的参数，这里是直接将user参数放到了model模型中返回到页面中使用，而return的字符窜“modelAttribute”其实就是视图文件名</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　&#x2F;*</span><br><span class="line"> * @ModelAttribute用于修饰入参,前台传过来的值自动赋予入参对于的属性</span><br><span class="line"> *&#x2F;</span><br><span class="line">@RequestMapping(&quot;&#x2F;testModelAttribute5&quot;)</span><br><span class="line">public String testModelAttribute(@ModelAttribute User user) &#123;</span><br><span class="line">    return &quot;modelAttribute&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>　　5.两个注解同时修饰方法，看注释解释，有点不一样，返回的东西不是视图，而是request域中的值，返回的视图变成了 @RequestMapping中指定的value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">　　&#x2F;*</span><br><span class="line"> * @ModelAttribute 和 @RequestMapping 同时修饰一个方法</span><br><span class="line"> * </span><br><span class="line"> * @ModelAttribute 中value为 request域中的key,被修饰的方法返回值为request域中的value</span><br><span class="line"> * @RequestMapping 中value为 返回的视图名,此例中相当于定向到xxx&#x2F;testModelAttribute4.jsp</span><br><span class="line"> *&#x2F;</span><br><span class="line"></span><br><span class="line">@ModelAttribute(value&#x3D;&quot;user&quot;)</span><br><span class="line">@RequestMapping(value&#x3D;&quot;&#x2F;testModelAttribute4&quot;)</span><br><span class="line">public User testModelAttribute() &#123;</span><br><span class="line">    return new User(&quot;kelin&quot;,&quot;123aaa&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　6.@ModelAttribute注释一个方法的返回值，</p>
+<p>　　大家可以看到返回值类型是对象类型，而且通过 @ModelAttribute(“user2”) 注解，此时会添加返回值到模型数据（ 名字为user2 ） 中供视图展示使用@ModelAttribute 注解的返回值会覆盖 @RequestMapping 注解方法中的 @ModelAttribute 注解的同名命令对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Controller </span><br><span class="line">public class HelloWorldController &#123; </span><br><span class="line">    @RequestMapping(value &#x3D; &quot;&#x2F;helloWorld&quot;) </span><br><span class="line">    public @ModelAttribute(&quot;user2&quot;) User helloWorld(@ModelAttribute User user) &#123; </span><br><span class="line">        return new User(); </span><br><span class="line">     &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上都是针对一个controller类中只有一个被@ModelAttribute修改的方法，如果一个controller中除了有@ModelAttribute修饰的方法还有被@RequestMapping修饰的方法有事如何工作的？</p>
+<p>我们知道在一个controller中当我们调用任何一个被@RequestMapping修饰的方法时都会先执行被@ModelAttribute修饰的方法</p>
+<p>1.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class ModelAttributeController&#123;</span><br><span class="line">    @ModelAttribute(&quot;loginname&quot;)</span><br><span class="line">    public String userModelfirst(@ResquestParam(&quot;loginname&quot;) String loginname)&#123;</span><br><span class="line">　　　　&#x2F;&#x2F;返回的参数赋值给value变量</span><br><span class="line">        return loginname;   </span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(vaule&#x3D;&quot;&#x2F;loginfirst&quot;)</span><br><span class="line">    public String loginfirst()&#123;</span><br><span class="line">　　　　&#x2F;&#x2F;返回到结果界面</span><br><span class="line">       return &quot;resultfirst&quot;; </span><br><span class="line">　　&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　这里注解@ModelAttribute注解默认vaule值为“loginname”，指定model的属性名称，属性的值就是@ModelAttribute注解的方法的返回值。他把请求参数loginname的值通过@ResquestParam赋值给变量loginname，然后再设置一个名为loginname的属性到Model中，属性值就是userModelfirst方法的返回值。</p>
+<p>　　因为@ModelAttribute优先于@RequestMapping执行，所以当访问URL“/loginfirst”时会先执行@ModelAttribute注解的方法，在resultfirst.jsp中用EL表达式得到${resquestScope.loginname}获取。</p>
+<p>上面的这种写法和下面这种写法是等价的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">public class ModelAttributeController&#123;</span><br><span class="line">    @ModelAttribute</span><br><span class="line">    public void userModelsecond(@ResquestParam(&quot;loginname&quot;) String loginname，Model model)&#123;</span><br><span class="line">        model.addAttribute(&quot;loginname&quot;,loginname);</span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(vaule&#x3D;&quot;&#x2F;loginsecond&quot;)</span><br><span class="line">    public String loginsecond()&#123;</span><br><span class="line">　　　　　&#x2F;&#x2F;返回到结果界面</span><br><span class="line">     　 return &quot;resultsecond&quot;; </span><br><span class="line">　　&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 2.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Controller@RequestMapping(&quot;&#x2F;modelAttributeController&quot;)</span><br><span class="line">public class ModelAttributeController&#123;</span><br><span class="line">   @ModelAttribute(&quot;user&quot;)</span><br><span class="line">   public String userModelfourth(@ResquestParam(&quot;loginname&quot;) String loginname)&#123;</span><br><span class="line">      User user1 &#x3D; new User();</span><br><span class="line">      user1.setLoginame(loginname);</span><br><span class="line">      return user1;   </span><br><span class="line">   &#125;</span><br><span class="line">   @RequestMapping(vaule&#x3D;&quot;&#x2F;loginfourth&quot;)</span><br><span class="line">   public String loginfourth( @ModelAttribute(&quot;user&quot;) User user)&#123;</span><br><span class="line">&#x2F;&#x2F;返回到结果界面</span><br><span class="line">   　　user.setUsername(&quot;test&quot;);</span><br><span class="line">   　　return &quot;resultfourth&quot;; </span><br><span class="line">　　&#125;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>　　当我们请求localhost:8080/modelAttributeController/loginfourth?loginname=lisi时，会先执行userModelfourth方法，同时会把lisi赋值给此方法的loginname参数，然后生成一个user对象，并且在model中会有一个key为user，value为user1的数据，然后才会执行loginfourth方法，同时将model中key为user的数据复制给loginfourth方法中user参数，然后在resultfourth.jsp的页面上可以通过${resquestScope.user.username}来获取相应的数据。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/SpringMVC/%E6%B3%A8%E8%A7%A3%E6%B1%87%E6%80%BB/@ModelAttribute%E6%B3%A8%E8%A7%A3/" data-id="ckk2gq3uc001iz8pq9irufhvr" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/18/Tomcat/01_tomcat%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/18/SpringMVC/SpringMVC%E6%95%B4%E5%90%88ElasticSearch/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/18/%E4%BA%91%E8%AE%A1%E7%AE%97/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/03_Redis%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/02_RabbitMQ%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/01_%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97%E7%9A%84%E6%96%B9%E6%A1%88%E4%BB%8B%E7%BB%8D/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%85%B6%E4%BB%96%E5%B0%8F%E6%8A%80%E5%B7%A7/github%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

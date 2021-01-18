@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="安装MySQL8.0使用最新的包管理器安装MySQL 1sudo dnf install @mysql 开启启动安装完成后，运行以下命令来启动MySQL服务并使它在启动时自动启动： 1sudo systemctl enable --now mysqld 要检查MySQL服务器是否正在运行，请输入： 1sudo systemctl status mysqld 添加密码及安全设置运行mysql_sec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/01/18/Linux/Centos8.0%E5%AE%89%E8%A3%85mysql/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装MySQL8.0使用最新的包管理器安装MySQL 1sudo dnf install @mysql 开启启动安装完成后，运行以下命令来启动MySQL服务并使它在启动时自动启动： 1sudo systemctl enable --now mysqld 要检查MySQL服务器是否正在运行，请输入： 1sudo systemctl status mysqld 添加密码及安全设置运行mysql_sec">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114424.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114458.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114432.png">
+<meta property="article:published_time" content="2021-01-18T11:01:37.498Z">
+<meta property="article:modified_time" content="2021-01-11T03:45:47.128Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114424.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Linux/Centos8.0安装mysql" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/Linux/Centos8.0%E5%AE%89%E8%A3%85mysql/" class="article-date">
+  <time class="dt-published" datetime="2021-01-18T11:01:37.498Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="安装MySQL8-0"><a href="#安装MySQL8-0" class="headerlink" title="安装MySQL8.0"></a>安装MySQL8.0</h4><p>使用最新的包管理器安装MySQL</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install @mysql</span><br></pre></td></tr></table></figure>
+<h4 id="开启启动"><a href="#开启启动" class="headerlink" title="开启启动"></a>开启启动</h4><p>安装完成后，运行以下命令来启动MySQL服务并使它在启动时自动启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable --now mysqld</span><br></pre></td></tr></table></figure>
+<p>要检查MySQL服务器是否正在运行，请输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysqld</span><br></pre></td></tr></table></figure>
+<h4 id="添加密码及安全设置"><a href="#添加密码及安全设置" class="headerlink" title="添加密码及安全设置"></a>添加密码及安全设置</h4><p>运行mysql_secure_installation脚本，该脚本执行一些与安全性相关的操作并设置MySQL根密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>步骤如下：</p>
+<ol>
+<li>要求你配置VALIDATE PASSWORD component（验证密码组件）： 输入y ，回车进入该配置<ul>
+<li>选择密码验证策略等级， 我这里选择0 （low），回车</li>
+<li>输入新密码两次</li>
+<li>确认是否继续使用提供的密码？输入y ，回车</li>
+<li>移除匿名用户？ 输入y ，回车</li>
+<li>不允许root远程登陆？ 我这里需要远程登陆，所以输入n ，回车<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114424.png" alt="img"></li>
+</ul>
+</li>
+<li>移除test数据库？ 输入y ，回车</li>
+<li>重新载入权限表？ 输入y ，回车<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114458.png" alt="img"></li>
+</ol>
+<h4 id="配置远程登陆"><a href="#配置远程登陆" class="headerlink" title="配置远程登陆"></a>配置远程登陆</h4><p>如果需要设置root账户远程登陆，上一步骤中，<code>不允许root远程登陆？</code>这一步需要设为n。<br>接下来本机登录MySQL，将root用户的host字段设为’%’，意为接受root所有IP地址的登录请求：<br>本机登录MySQL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p&lt;上面步骤中设置的密码&gt;</span><br></pre></td></tr></table></figure>
+<p>回车后即可登录，接下来终端变成了<code>mysql&gt;</code>开头:<br><img src="https://cdn.jsdelivr.net/gh/FateCause/typoraPic/images/20210111114432.png" alt="img"></p>
+<p>接着继续执行mysql语句，将将root用户的host字段设为’%’：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user set host&#x3D;&#39;%&#39; where user&#x3D;&#39;root&#39;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+<p>设置完成后输入exit退出mysql，回到终端shell界面，接着开启系统防火墙的3306端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --add-port&#x3D;3306&#x2F;tcp --permanent</span><br><span class="line">sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h4 id="关闭MySQL主机查询dns"><a href="#关闭MySQL主机查询dns" class="headerlink" title="关闭MySQL主机查询dns"></a>关闭MySQL主机查询dns</h4><p>MySQL会反向解析远程连接地址的dns记录，如果MySQL主机无法连接外网，则dns可能无法解析成功，导致第一次连接MySQL速度很慢，所以在配置中可以关闭该功能。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liruning/p/7111015.html">参考文档</a><br>打开<code>/etc/my.cnf</code>文件，添加以下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">skip-name-resolve</span><br></pre></td></tr></table></figure>
+<h4 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart mysqld</span><br></pre></td></tr></table></figure>
+<p>本机测试安装后，MySQL8.0默认已经是utf8mb4字符集，所以字符集不再修改</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/18/Linux/Centos8.0%E5%AE%89%E8%A3%85mysql/" data-id="ckk2gq3tb000ez8pqgpwq3ab4" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/18/Linux/Linux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/18/Kubernetes/k8s%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/18/%E4%BA%91%E8%AE%A1%E7%AE%97/%E4%BA%91%E8%AE%A1%E7%AE%97%E5%B8%B8%E8%A7%81%E6%A6%82%E5%BF%B5/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/03_Redis%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/02_RabbitMQ%E5%AE%9E%E7%8E%B0%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%BB%B6%E8%BF%9F%E6%B6%88%E6%81%AF%E5%8F%91%E9%80%81/01_%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97%E7%9A%84%E6%96%B9%E6%A1%88%E4%BB%8B%E7%BB%8D/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/%E5%85%B6%E4%BB%96%E5%B0%8F%E6%8A%80%E5%B7%A7/github%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
